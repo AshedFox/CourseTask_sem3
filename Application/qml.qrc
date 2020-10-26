@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qml/StyleSettings/qmldir</file>
+        <file>qml/StyleSettings/Style.qml</file>
+        <file>qml/ResourceProvider/qmldir</file>
+        <file>qml/ResourceProvider/Resources.qml</file>
+        <file>qml/Resources/menuIcon.svg</file>
+        <file>qml/ComponentsModule/Impl/qmldir</file>
+        <file>qml/ComponentsModule/qmldir</file>
+        <file>qml/ComponentsModule/Base/qmldir</file>
+        <file>qml/ComponentsModule/Base/BaseProtoDelegate.qml</file>
+        <file>qml/ComponentsModule/Base/BaseProtoView.qml</file>
+        <file>qml/ComponentsModule/Base/BaseProtoText.qml</file>
+        <file>qml/ComponentsModule/Base/BaseText.qml</file>
+        <file>qml/ComponentsModule/Base/CatalogueOverlay.qml</file>
+        <file>qml/ComponentsModule/Impl/ProtoDelegate.qml</file>
+        <file>qml/ComponentsModule/Impl/ProtoView.qml</file>
+        <file>qml/Resources/changeIcon.svg</file>
+        <file>qml/Resources/deleteIcon.svg</file>
+        <file>qml/ComponentsModule/Base/BaseButton.qml</file>
+        <file>qml/ComponentsModule/Base/DeleteButton.qml</file>
+        <file>qml/ComponentsModule/Base/ChangeButton.qml</file>
+        <file>qml/ComponentsModule/Base/MenuButton.qml</file>
+    </qresource>
+</RCC>

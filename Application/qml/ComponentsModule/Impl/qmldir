@@ -1,0 +1,4 @@
+module Impl
+
+ProtoDelegate 1.0 ProtoDelegate.qml
+ProtoView 1.0 ProtoView.qml
