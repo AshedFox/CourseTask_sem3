@@ -10,12 +10,18 @@ class Note
 public: 
 
     Note() = default;
-    Note(const QString& name);
+    Note(const int id, const QString& header);
+    Note(const QString& header);
+
+    int getId() const;
 
     QString header() const;
 
+    QVariantList getfullRowData() const;
+
 private:
 
+    int m_id;
     QString m_header;
 };
 

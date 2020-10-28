@@ -15,6 +15,7 @@ namespace db {
 
         QPair<DBResult,
                   QSqlQuery> execute(const QString& queryText, const QVariantList& args = {});
+
     private:
         ConnectionManager& m_connectionManager;
     };

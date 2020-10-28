@@ -5,6 +5,7 @@ import ComponentsModule.Impl 1.0
 import QtQuick.Controls 2.12
 import ComponentsModule.Base 1.0
 import QtGraphicalEffects 1.0
+import Notes 1.0
 
 Window {
     id: root
@@ -38,7 +39,14 @@ Window {
         }
         CatalogueOverlay{
             id: _overlay
-        }
+            AddButton {
+                width: 50
+                height: 50
+                anchors.left: parent.left
+                anchors.bottom: parent.bottom
+                area.onClicked: _notes.viewModel.addElement("")
+            }
+        }        
     }
 
     ColorOverlay {

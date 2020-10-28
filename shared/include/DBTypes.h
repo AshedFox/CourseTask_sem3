@@ -22,6 +22,7 @@ enum class DBState {
 };
 
 using DBEntry = QVariantList;
+using DBIndex = int;
 }
 
 #endif // DBTYPES_H

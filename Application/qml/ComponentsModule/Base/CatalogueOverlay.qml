@@ -21,18 +21,6 @@ Rectangle {
                 else
                     root.width = 200
             }
-
-//            MouseArea {
-//                id: _imageArea
-//                anchors.fill: parent
-//                hoverEnabled: true
-//                onClicked: {
-//                    if (root.width === 200)
-//                        root.width = 50
-//                    else
-//                        root.width = 200
-//                }
-//            }
         }
 
         color: Style.backgroundColor

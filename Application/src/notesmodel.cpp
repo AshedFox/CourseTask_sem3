@@ -19,6 +19,7 @@ void NotesModel::registerMe(const std::string& moduleName)
 QHash<int, QByteArray> NotesModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
+    roles[NoteRoles::idRole] = "id";
     roles[NoteRoles::HeaderRole] = "header";
     return roles;
 }
@@ -26,8 +27,26 @@ QHash<int, QByteArray> NotesModel::roleNames() const
 bool NotesModel::deleteElement(int index)
 {
     beginRemoveRows(QModelIndex(), index,index);
+    m_NotesReader.requestNoteDeletion({m_Notes.at(index).getId()});
     m_Notes.removeAt(index);
     endRemoveRows();
+    return true;
+}
+
+bool NotesModel::addElement(QString header)
+{
+    beginInsertRows(QModelIndex(), m_Notes.size(), m_Notes.size());
+    //m_Notes.push_back({m_Notes.size()+1, header});
+    m_Notes.push_back({m_NotesReader.requestNoteAddition({header}), header});
+    endInsertRows();
+    return true;
+}
+
+bool NotesModel::changeElement(int index, QString header)
+{
+    m_NotesReader.requestNoteChange(m_Notes.at(index).getId(), {header});
+    m_Notes.removeAt(index);
+    m_Notes.insert(index, header);
     return true;
 }
 

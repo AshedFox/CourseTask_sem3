@@ -19,7 +19,7 @@ namespace db {
                 const QSqlRecord& entryRecord {pair.second.record()};
                 QVariantList entryData;
                 entryData.reserve(entryRecord.count());
-                for (int i =0; i < entryRecord.count(); i++){
+                for (int i = 0; i < entryRecord.count(); i++){
                     entryData.push_back(entryRecord.value(i));
                 }
 

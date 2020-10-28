@@ -9,6 +9,9 @@ static const QMap<DBTables, QString> tableMapper {
 };
 
 static const QMap<QString, QString> tablesMapping {
+    {"Notes", "id, Header"}
+};
+static const QMap<QString, QString> tablesMappingWithoutID {
     {"Notes", "Header"}
 };
 }

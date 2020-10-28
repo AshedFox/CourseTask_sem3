@@ -7,12 +7,12 @@ import StyleSettings 1.0
 
 BaseProtoView {
     id: root
-    property alias viewModel: _nodesModel
+    property alias viewModel: _notesModel
     model: NotesModel {
-        id: _nodesModel
+        id: _notesModel
     }
     delegate: ProtoDelegate {
-        id: _nodes
+        id: _notes
         width: root.width
         height: 80
     }

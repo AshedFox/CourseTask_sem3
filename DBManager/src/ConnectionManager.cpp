@@ -114,7 +114,9 @@ bool db::ConnectionManager::ConnectionManagerPrivate::setupTables()
         QSqlQuery{
             "CREATE TABLE IF NOT EXISTS Notes"
             "("
-            "Header TEXT"
+            "id INTEGER,"
+            "Header TEXT,"
+            "PRIMARY KEY(id AUTOINCREMENT)"
             ")"
         }
     };

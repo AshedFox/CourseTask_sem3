@@ -8,6 +8,7 @@ BaseProtoDelegate {
     id: root
     BaseProtoText {
         id: _header
+        property string fullText: header
 
         anchors.left: root.left
         anchors.right: _buttons.left
@@ -16,6 +17,10 @@ BaseProtoDelegate {
         height: parent.height
 
         text: header
+        onEditingFinished: {
+            fullText = text
+            viewModel.changeElement(index, text)
+        }
     }
     Row {
         id: _buttons
@@ -31,13 +36,13 @@ BaseProtoDelegate {
             width: height
             area.onClicked:{
                 _header.readOnly = !_header.readOnly
-                _header.forceActiveFocus()
+                _header.forceActiveFocus()                
             }
         }
         DeleteButton{
             height: parent.height
             width: height
-            area.onClicked: _nodesModel.deleteElement(index)
-        }
+            area.onClicked: viewModel.deleteElement(index)
+        }        
     }
 }

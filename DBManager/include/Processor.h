@@ -10,7 +10,9 @@ namespace db {
         Processor();
         ~Processor();
         QPair <DBResult, QVector<DBEntry>> requestTableData(DBTables table);
-        void insertData(const QString& tableName, const QVariantList& rowData);
+        int insertData(const QString& tableName, const QVariantList& rowData);
+        void deleteData(const QString& tableName, const QVariantList& rowData);
+        void changeData(const QString& tableName, const int index, const QVariantList& newRowData);
 
     private:
         struct ProcessorPrivate;

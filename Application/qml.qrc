@@ -22,5 +22,7 @@
         <file>qml/ComponentsModule/Base/DeleteButton.qml</file>
         <file>qml/ComponentsModule/Base/ChangeButton.qml</file>
         <file>qml/ComponentsModule/Base/MenuButton.qml</file>
+        <file>qml/Resources/addIcon.svg</file>
+        <file>qml/ComponentsModule/Base/AddButton.qml</file>
     </qresource>
 </RCC>
