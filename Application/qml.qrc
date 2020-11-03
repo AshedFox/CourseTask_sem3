@@ -14,8 +14,8 @@
         <file>qml/ComponentsModule/Base/BaseProtoText.qml</file>
         <file>qml/ComponentsModule/Base/BaseText.qml</file>
         <file>qml/ComponentsModule/Base/CatalogueOverlay.qml</file>
-        <file>qml/ComponentsModule/Impl/ProtoDelegate.qml</file>
-        <file>qml/ComponentsModule/Impl/ProtoView.qml</file>
+        <file>qml/ComponentsModule/Impl/ProtoNoteDelegate.qml</file>
+        <file>qml/ComponentsModule/Impl/ProtoNoteView.qml</file>
         <file>qml/Resources/changeIcon.svg</file>
         <file>qml/Resources/deleteIcon.svg</file>
         <file>qml/ComponentsModule/Base/BaseButton.qml</file>
@@ -24,5 +24,10 @@
         <file>qml/ComponentsModule/Base/MenuButton.qml</file>
         <file>qml/Resources/addIcon.svg</file>
         <file>qml/ComponentsModule/Base/AddButton.qml</file>
+        <file>qml/ComponentsModule/Base/BaseNoteDelegate.qml</file>
+        <file>qml/ComponentsModule/Impl/NotesView.qml</file>
+        <file>qml/ComponentsModule/Impl/NoteDelegate.qml</file>
+        <file>qml/ComponentsModule/Impl/ProtoTaskDelegate.qml</file>
+        <file>qml/ComponentsModule/Impl/ProtoTasksView.qml</file>
     </qresource>
 </RCC>

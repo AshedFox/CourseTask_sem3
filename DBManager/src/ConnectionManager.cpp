@@ -116,6 +116,18 @@ bool db::ConnectionManager::ConnectionManagerPrivate::setupTables()
             "("
             "id INTEGER,"
             "Header TEXT,"
+            "Info TEXT,"
+            "PRIMARY KEY(id AUTOINCREMENT)"
+            ")"
+        },
+        QSqlQuery{
+            "CREATE TABLE IF NOT EXISTS Tasks"
+            "("
+            "id INTEGER,"
+            "Header TEXT,"
+            "Date TEXT,"
+            "Time TEXT,"
+            "Info TEXT,"
             "PRIMARY KEY(id AUTOINCREMENT)"
             ")"
         }

@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "notesmodel.h"
+#include "tasksmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +13,8 @@ int main(int argc, char *argv[])
 
     //qmlRegisterType<NotesModel>("Game", 1, 0, "TNotesModel");
     NotesModel::registerMe("Notes");
+    TasksModel::registerMe("Tasks");
+
 
     QQmlApplicationEngine engine;
     engine.addImportPath(":/qml");

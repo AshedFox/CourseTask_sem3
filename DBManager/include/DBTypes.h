@@ -10,7 +10,8 @@ enum class DBResult {
 };
 
 enum class DBTables {
-    Notes = 1
+    Notes = 1,
+    Tasks
 };
 
 enum class DBState {

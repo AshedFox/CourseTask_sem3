@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.9
 import QtQuick.Window 2.12
 import StyleSettings 1.0
 import ComponentsModule.Impl 1.0
@@ -27,8 +27,18 @@ Window {
             color: Style.backgroundColor
             opacity: Style.emphasisOpacity
         }
-        ProtoView {
-            id: _notes
+//        ProtoNoteView {
+//            id: _notes
+//            anchors.left: _overlay.right
+//            anchors.right: parent.right
+//            anchors.top: parent.top
+//            anchors.bottom: parent.bottom
+//            anchors.leftMargin: 2
+
+//            ScrollBar.vertical: ScrollBar{}
+//        }
+        ProtoTasksView{
+            id: _tasks
             anchors.left: _overlay.right
             anchors.right: parent.right
             anchors.top: parent.top
@@ -37,14 +47,31 @@ Window {
 
             ScrollBar.vertical: ScrollBar{}
         }
+
+//        NotesView {
+//            id: _notes2
+//            anchors.left: _overlay.right
+//            anchors.right: parent.right
+//            anchors.top: parent.top
+//            anchors.bottom: parent.bottom
+//            anchors.leftMargin: 2
+//           // visible: false
+//        }
+
         CatalogueOverlay{
             id: _overlay
             AddButton {
+                id: _addButton
                 width: 50
                 height: 50
                 anchors.left: parent.left
                 anchors.bottom: parent.bottom
-                area.onClicked: _notes.viewModel.addElement("")
+                property date a: new Date()
+                property date b: new Date()
+                area.onClicked: {
+
+                   _tasks.viewModel.addElement("", a.toLocaleDateString(), b.toLocaleTimeString())
+                }
             }
         }        
     }

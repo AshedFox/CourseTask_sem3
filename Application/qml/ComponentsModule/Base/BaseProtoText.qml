@@ -11,7 +11,6 @@ TextInput {
     text: fullText
     onEditingFinished: {
         readOnly = true
-
     }
 }
 

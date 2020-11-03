@@ -21,13 +21,14 @@ QHash<int, QByteArray> NotesModel::roleNames() const
     QHash<int, QByteArray> roles;
     roles[NoteRoles::idRole] = "id";
     roles[NoteRoles::HeaderRole] = "header";
+    roles[NoteRoles::InfoRole] = "info";
     return roles;
 }
 
 bool NotesModel::deleteElement(int index)
 {
     beginRemoveRows(QModelIndex(), index,index);
-    m_NotesReader.requestNoteDeletion({m_Notes.at(index).getId()});
+    m_NotesReader.requestNoteDeletion({m_Notes.at(index).id()});
     m_Notes.removeAt(index);
     endRemoveRows();
     return true;
@@ -36,15 +37,23 @@ bool NotesModel::deleteElement(int index)
 bool NotesModel::addElement(QString header)
 {
     beginInsertRows(QModelIndex(), m_Notes.size(), m_Notes.size());
-    //m_Notes.push_back({m_Notes.size()+1, header});
-    m_Notes.push_back({m_NotesReader.requestNoteAddition({header}), header});
+    m_Notes.push_back({m_NotesReader.requestNoteAddition({header, ""}), header, ""});
     endInsertRows();
     return true;
 }
 
 bool NotesModel::changeElement(int index, QString header)
 {
-    m_NotesReader.requestNoteChange(m_Notes.at(index).getId(), {header});
+    m_NotesReader.requestNoteChange(m_Notes.at(index).id(), {header});
+    m_Notes.removeAt(index);
+    m_Notes.insert(index, header);
+    return true;
+}
+
+bool NotesModel::changeNote(int index, QString info)
+{
+    m_NotesReader.requestNoteChange(m_Notes.at(index).id(), {m_Notes.at(index).header(),info});
+    auto header = m_Notes.at(index).header();
     m_Notes.removeAt(index);
     m_Notes.insert(index, header);
     return true;
@@ -78,8 +87,14 @@ QVariant NotesModel::data(const QModelIndex &index, int role) const
     const Note& Note {m_Notes.at(index.row())};
 
     switch (role) {
+    case NoteRoles::idRole:{
+        return QVariant::fromValue(Note.id());
+    }
     case NoteRoles::HeaderRole:{
         return QVariant::fromValue(Note.header());
+    }
+    case NoteRoles::InfoRole: {
+        return QVariant::fromValue(Note.info());
     }
 
     default:

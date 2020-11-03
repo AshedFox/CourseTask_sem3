@@ -13,12 +13,13 @@ NotesReader::~NotesReader()
 
 }
 
-QVector<Note> transform(const QVector<db::DBEntry>& source){
+QVector<Note> transformNote(const QVector<db::DBEntry>& source){
     QVector<Note> target;
     std::transform(source.begin(),source.end(), std::back_inserter(target),
             [] (const db::DBEntry& entry){
         return Note {entry[1].toInt(),
-                     entry[2].toString()
+                     entry[2].toString(),
+                     entry[3].toString()
         };
     });
     return target;
@@ -28,7 +29,7 @@ QPair<bool, QVector<Note> > NotesReader::requestNotesBrowse()
 {
     QPair<db::DBResult, QVector<db::DBEntry>> pair;
     pair = m_processor->requestTableData(db::DBTables::Notes);
-    return {pair.first == db::DBResult::OK, transform(pair.second)};
+    return {pair.first == db::DBResult::OK, transformNote(pair.second)};
 }
 
 int NotesReader::requestNoteAddition(const QVariantList &addData)

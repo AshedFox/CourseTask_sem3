@@ -16,7 +16,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES +=  main.cpp \
             src/note.cpp \
             src/notesmodel.cpp \
-            src/notesreader.cpp
+            src/notesreader.cpp \
+            src/task.cpp \
+            src/tasksmodel.cpp \
+            src/tasksreader.cpp \
 
 RESOURCES += \
     qml.qrc
@@ -41,4 +44,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS +=  \
             include/note.h \
             include/notesmodel.h \
-            include/notesreader.h
+            include/notesreader.h \
+            include/task.h \
+            include/tasksmodel.h \
+            include/tasksreader.h \

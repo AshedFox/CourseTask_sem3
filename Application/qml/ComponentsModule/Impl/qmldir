@@ -1,4 +1,8 @@
 module Impl
 
-ProtoDelegate 1.0 ProtoDelegate.qml
-ProtoView 1.0 ProtoView.qml
+ProtoNoteDelegate 1.0 ProtoNoteDelegate.qml
+ProtoNoteView 1.0 ProtoNoteView.qml
+NoteDelegate 1.0 NoteDelegate.qml
+NotesView 1.0 NotesView.qml
+ProtoTaskDelegate 1.0 ProtoTaskDelegate.qml
+ProtoTasksView 1.0 ProtoTasksView.qml

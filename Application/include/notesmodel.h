@@ -20,18 +20,20 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     Q_INVOKABLE bool deleteElement(int index);
-    Q_INVOKABLE bool addElement(QString data);
-    Q_INVOKABLE bool changeElement(int index, QString data);
+    Q_INVOKABLE bool addElement(QString header);
+    Q_INVOKABLE bool changeElement(int index, QString header);
+    Q_INVOKABLE bool changeNote(int index, QString info);
+
 
 private:
     NotesReader m_NotesReader;
 
     QVector<Note> m_Notes;
 
-
     enum NoteRoles {
         idRole = Qt::UserRole+1,
-        HeaderRole
+        HeaderRole,
+        InfoRole
     };
 
     bool updateNotes();
