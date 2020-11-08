@@ -47,16 +47,17 @@ bool TasksModel::addElement(QString header, QString date, QString time)
 
 bool TasksModel::changeElement(int index, QString header, QString date, QString time)
 {
-    m_TasksReader.requestTaskChange(m_Tasks.at(index).id(), {header});
+    m_TasksReader.requestTaskChange(m_Tasks.at(index).id(), {header, date, time, m_Tasks.at(index).info()});
+    Task oldData = {m_Tasks.at(index).id(), header, date, time, m_Tasks.at(index).info()};
     m_Tasks.removeAt(index);
-    m_Tasks.insert(index, {header, date, time});
+    m_Tasks.insert(index, oldData);
     return true;
 }
 
 bool TasksModel::changeTask(int index, QString info)
 {
-    m_TasksReader.requestTaskChange(m_Tasks.at(index).id(), {m_Tasks.at(index).header(),info});
-    Task oldData = {m_Tasks.at(index).header(), m_Tasks.at(index).date(), m_Tasks.at(index).time()};
+    m_TasksReader.requestTaskChange(m_Tasks.at(index).id(), {m_Tasks.at(index).header(), m_Tasks.at(index).date(), m_Tasks.at(index).time(), info});
+    Task oldData = {m_Tasks.at(index).id(), m_Tasks.at(index).header(), m_Tasks.at(index).date(), m_Tasks.at(index).time(), info};
     m_Tasks.removeAt(index);
     m_Tasks.insert(index, oldData);
     return true;
@@ -95,6 +96,12 @@ QVariant TasksModel::data(const QModelIndex &index, int role) const
     }
     case TaskRoles::HeaderRole:{
         return QVariant::fromValue(Task.header());
+    }
+    case TaskRoles::DateRole: {
+        return QVariant::fromValue(Task.date());
+    }
+    case TaskRoles::TimeRole: {
+        return QVariant::fromValue(Task.time());
     }
     case TaskRoles::InfoRole: {
         return QVariant::fromValue(Task.info());

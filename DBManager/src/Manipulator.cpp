@@ -63,12 +63,4 @@ QString Manipulator::generateChangeQuery(const QString &tableName, int index, si
     return query;
 }
 
-//QString Manipulator::generateChangeQueryNewData(const QString &tableName, size_t paramCount) const
-//{
-//    QString query {" WHERE (" + tablesMapping.value(tableName) + ") = ("};
-//    query += generateBindString(paramCount);
-//    query += ")";
-//    return query;
-//}
-
 }

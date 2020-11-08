@@ -10,9 +10,10 @@ BaseProtoView {
         id: _notesModel
     }
     delegate: ProtoNoteDelegate {
-        id: _notes
+        id: _note
         width: root.width
         height: 80
+
     }
 
 }

@@ -11,7 +11,7 @@ public:
 
     Note() = default;
     Note(const int id, const QString& header, const QString& info);
-    Note(const QString& header);
+    Note(const QString& header, const QString& info);
 
     int id() const;
 

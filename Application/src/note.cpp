@@ -8,8 +8,9 @@ Note::Note(const int id, const QString& header, const QString& info)
 
 }
 
-Note::Note(const QString &header)
-    : m_header {header}
+Note::Note(const QString &header, const QString& info)
+    : m_header {header},
+      m_info {info}
 
 {
 

@@ -12,7 +12,7 @@ public:
 
     Task() = default;
     Task(const int id, const QString& header, const QString& date, const QString& time, const QString& info);
-    Task(const QString& header, const QString& date, const QString& time);
+    Task(const QString& header, const QString& date, const QString& time, const QString& info);
 
     int id() const;
 

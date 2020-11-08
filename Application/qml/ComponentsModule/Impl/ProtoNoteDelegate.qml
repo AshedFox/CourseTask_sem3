@@ -12,14 +12,15 @@ BaseProtoDelegate {
 
         anchors.left: root.left
         anchors.right: _buttons.left
-        anchors.margins: Style.mediumOffset       
-        verticalAlignment: Text.AlignVCenter
-        height: parent.height
+        anchors.leftMargin: Style.defaultOffset * 2
+        anchors.verticalCenter: parent.verticalCenter
 
-        text: header
+        verticalAlignment: Text.AlignVCenter
+
+        text: fullText
         onEditingFinished: {
             fullText = text
-            viewModel.changeElement(index, text)
+            viewModel.changeElement(index, fullText)
         }
     }
     Row {

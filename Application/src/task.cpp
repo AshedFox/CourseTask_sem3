@@ -10,10 +10,11 @@ Task::Task(const int id, const QString& header, const QString& date, const QStri
 
 }
 
-Task::Task(const QString& header, const QString& date, const QString& time)
+Task::Task(const QString& header, const QString& date, const QString& time, const QString& info)
     : m_header{header},
       m_date{date},
-      m_time{time}
+      m_time{time},
+      m_info{info}
 
 {
 

@@ -24,9 +24,6 @@
         <file>qml/ComponentsModule/Base/MenuButton.qml</file>
         <file>qml/Resources/addIcon.svg</file>
         <file>qml/ComponentsModule/Base/AddButton.qml</file>
-        <file>qml/ComponentsModule/Base/BaseNoteDelegate.qml</file>
-        <file>qml/ComponentsModule/Impl/NotesView.qml</file>
-        <file>qml/ComponentsModule/Impl/NoteDelegate.qml</file>
         <file>qml/ComponentsModule/Impl/ProtoTaskDelegate.qml</file>
         <file>qml/ComponentsModule/Impl/ProtoTasksView.qml</file>
     </qresource>

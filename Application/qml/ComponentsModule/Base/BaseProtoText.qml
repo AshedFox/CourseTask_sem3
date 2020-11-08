@@ -5,12 +5,13 @@ import QtQuick.Controls 2.5
 TextInput {
     id: root   
 
-    font.pointSize: 25
+    font.pointSize: 30
     readOnly: true
     color: Style.textColor
-    text: fullText
+    //text: fullText
     onEditingFinished: {
         readOnly = true
     }
+    //maximumLength: 20
 }
 

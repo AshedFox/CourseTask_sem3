@@ -1,12 +1,15 @@
 module Base
 
 BaseButton 1.0 BaseButton.qml
+
 BaseProtoDelegate 1.0 BaseProtoDelegate.qml
-BaseProtoText 1.0 BaseProtoText.qml
 BaseProtoView 1.0 BaseProtoView.qml
-BaseNoteDelegate 1.0 BaseNoteDelegate.qml
+
+BaseProtoText 1.0 BaseProtoText.qml
 BaseText 1.0 BaseText.qml
+
 CatalogueOverlay 1.0 CatalogueOverlay.qml
+
 AddButton 1.0 AddButton.qml
 DeleteButton 1.0 DeleteButton.qml
 ChangeButton 1.0 ChangeButton.qml

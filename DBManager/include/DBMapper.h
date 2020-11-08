@@ -14,8 +14,6 @@ static const QMap<QString, QString> tablesMapping {
     {"Tasks", "id, Header, Date, Time, Info"}
 };
 
-//static const QMap<QString, QString> tablesMapping
-
 static const QMap<QString, QString> tablesMappingWithoutID {
     {"Notes", "Header, Info"},
     {"Tasks", "Header, Date, Time, Info"}

@@ -11,45 +11,42 @@ BaseProtoDelegate {
         property string fullText: header
 
         anchors.left: root.left
-        anchors.right: _dateTime.left
-        anchors.margins: Style.mediumOffset
-        verticalAlignment: Text.AlignVCenter
-        height: parent.height
+        anchors.right: _dateTime.left        
+        anchors.leftMargin: Style.defaultOffset * 2
+        anchors.verticalCenter: parent.verticalCenter
 
-        text: header
-        onEditingFinished: {
+        verticalAlignment: Text.AlignVCenter
+
+        text: fullText
+        onTextEdited: {
             fullText = text
-            viewModel.changeElement(index, text)
+            viewModel.changeElement(index, text, date, time)
         }
+
     }
     Column {
         id: _dateTime
-        anchors.left: _header.left
+
+        property string fullTime: time
+        property string fullDate: date
+
         anchors.right: _buttons.left
-        anchors.margins: Style.mediumOffset
-        height: parent.height
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.margins: Style.tinyOffset
+        anchors.rightMargin: Style.defaultOffset
         BaseText {
             id: _time
             verticalAlignment: Text.AlignVCenter
-            anchors.bottom: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
 
-            readOnly: true
-
-            property date fullTime: new Date()
-
-            text: fullTime.toLocaleTimeString()
+            text: _dateTime.fullTime
 
         }
         BaseText {
             id: _date
             verticalAlignment: Text.AlignVCenter
-            anchors.top: parent.verticalCenter
 
-            property date fullDate: new Date()
-
-            readOnly: true
-
-            text: fullDate.toLocaleDateString()
+            text: _dateTime.fullDate
         }
     }
 

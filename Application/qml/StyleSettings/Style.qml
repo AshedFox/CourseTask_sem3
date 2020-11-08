@@ -22,6 +22,7 @@ QtObject {
     readonly property int defaultOffset: 15
     readonly property int mediumOffset: 10
     readonly property int tinyOffset: 5
+    readonly property int minimalOffset: 2
 
     readonly property int bigSpacing: 20
     readonly property int mediumSpacing: 10

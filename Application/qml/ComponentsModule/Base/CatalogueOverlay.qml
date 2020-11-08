@@ -8,6 +8,9 @@ Rectangle {
     height: parent.height
     color: Style.backgroundColor
 
+    property alias addButton: _addButton
+
+
     Rectangle {
         id: _header
         height: 50
@@ -32,4 +35,13 @@ Rectangle {
             opacity: Style.emphasisOpacity
         }
     }
+
+    AddButton {
+        id: _addButton
+        width: 50
+        height: 50
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+    }
+
 }

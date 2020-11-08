@@ -44,18 +44,19 @@ bool NotesModel::addElement(QString header)
 
 bool NotesModel::changeElement(int index, QString header)
 {
-    m_NotesReader.requestNoteChange(m_Notes.at(index).id(), {header});
+    m_NotesReader.requestNoteChange(m_Notes.at(index).id(), {header, m_Notes.at(index).info()});
+    Note oldData {m_Notes.at(index).id(), header, m_Notes.at(index).info()};
     m_Notes.removeAt(index);
-    m_Notes.insert(index, header);
+    m_Notes.insert(index, oldData);
     return true;
 }
 
 bool NotesModel::changeNote(int index, QString info)
 {
     m_NotesReader.requestNoteChange(m_Notes.at(index).id(), {m_Notes.at(index).header(),info});
-    auto header = m_Notes.at(index).header();
+    Note oldData {m_Notes.at(index).id(), m_Notes.at(index).header(), info};
     m_Notes.removeAt(index);
-    m_Notes.insert(index, header);
+    m_Notes.insert(index, oldData);
     return true;
 }
 

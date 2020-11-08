@@ -13,6 +13,8 @@ BaseProtoView {
         id: _tasks
         width: root.width
         height: 80
+
+
     }
 
 
