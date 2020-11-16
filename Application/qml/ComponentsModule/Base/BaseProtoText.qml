@@ -5,7 +5,7 @@ import QtQuick.Controls 2.5
 TextInput {
     id: root   
 
-    font.pointSize: 30
+    font.pointSize: 27
     readOnly: true
     color: Style.textColor
     //text: fullText

@@ -14,3 +14,4 @@ AddButton 1.0 AddButton.qml
 DeleteButton 1.0 DeleteButton.qml
 ChangeButton 1.0 ChangeButton.qml
 MenuButton 1.0 MenuButton.qml
+BackButton 1.0 BackButton.qml

@@ -50,6 +50,27 @@ BaseProtoDelegate {
         }
     }
 
+    opacity: _delegateArea.pressed ? Style.secondaryOpacity
+                                   : Style.emphasisOpacity
+    MouseArea {
+        id: _delegateArea
+        anchors.fill: root
+        enabled: _header.readOnly ? true : false
+        onClicked: {
+            forceActiveFocus()
+
+            _tasksLoader.item.visible = false
+
+            _fullTask.index = index
+            _fullTask.header = header
+            _fullTask.date = date
+            _fullTask.time = time
+            _fullTask.info = info
+
+            _fullTask.visible = true
+        }
+    }
+
     Row {
         id: _buttons
         anchors.right: root.right

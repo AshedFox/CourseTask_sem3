@@ -6,6 +6,7 @@ import ComponentsModule.Base 1.0
 
 BaseProtoDelegate {
     id: root
+    property alias delegateArea: _delegateArea
     BaseProtoText {
         id: _header
         property string fullText: header
@@ -23,6 +24,28 @@ BaseProtoDelegate {
             viewModel.changeElement(index, fullText)
         }
     }
+
+    opacity: _delegateArea.pressed ? Style.secondaryOpacity
+                                   : Style.emphasisOpacity
+    MouseArea {
+        id: _delegateArea
+        anchors.fill: root
+        enabled: _header.readOnly ? true : false
+
+        onClicked: {
+            forceActiveFocus()
+
+            _notesLoader.item.visible = false
+
+            _fullNote.index = index
+            _fullNote.header = header
+            _fullNote.info = info
+
+            _fullNote.visible = true
+            _fullNote.transform
+        }
+    }
+
     Row {
         id: _buttons
         anchors.right: root.right
@@ -35,15 +58,16 @@ BaseProtoDelegate {
         ChangeButton{
             height: parent.height
             width: height
-            area.onClicked:{
+            area.onClicked: {
                 _header.readOnly = !_header.readOnly
-                _header.forceActiveFocus()                
+                _header.forceActiveFocus()
             }
+
         }
         DeleteButton{
             height: parent.height
             width: height
             area.onClicked: viewModel.deleteElement(index)
-        }        
+        }
     }
 }

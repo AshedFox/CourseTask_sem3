@@ -3,5 +3,8 @@ module Impl
 ProtoNoteDelegate 1.0 ProtoNoteDelegate.qml
 ProtoNoteView 1.0 ProtoNoteView.qml
 
+FullNoteView 1.0 FullNoteView.qml
+FullTaskView 1.0 FullTaskView.qml
+
 ProtoTaskDelegate 1.0 ProtoTaskDelegate.qml
 ProtoTasksView 1.0 ProtoTasksView.qml

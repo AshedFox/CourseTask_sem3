@@ -26,5 +26,9 @@
         <file>qml/ComponentsModule/Base/AddButton.qml</file>
         <file>qml/ComponentsModule/Impl/ProtoTaskDelegate.qml</file>
         <file>qml/ComponentsModule/Impl/ProtoTasksView.qml</file>
+        <file>qml/ComponentsModule/Impl/FullNoteView.qml</file>
+        <file>qml/ComponentsModule/Impl/FullTaskView.qml</file>
+        <file>qml/Resources/backIcon.svg</file>
+        <file>qml/ComponentsModule/Base/BackButton.qml</file>
     </qresource>
 </RCC>

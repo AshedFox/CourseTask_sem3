@@ -9,6 +9,7 @@ class NotesModel : public QAbstractListModel
 {
     Q_OBJECT
 
+
 public:
     NotesModel();
 

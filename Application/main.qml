@@ -5,6 +5,7 @@ import ComponentsModule.Impl 1.0
 import QtQuick.Controls 2.12
 import ComponentsModule.Base 1.0
 import QtGraphicalEffects 1.0
+import QtQml 2.12
 
 Window {
     id: root
@@ -35,8 +36,6 @@ Window {
 
         anchors.fill: parent
 
-        property alias currentView: _list
-
         background: Rectangle {
             id: _background
             color: Style.backgroundColor
@@ -58,34 +57,29 @@ Window {
             anchors.margins: Style.minimalOffset
 
             Loader {
+                id: _tasksLoader
                 sourceComponent: _tasks
+                FullTaskView {
+                    id: _fullTask
+                    visible: false
+                }
             }
             Loader {
+                id: _notesLoader
                 sourceComponent: _notes
+                FullNoteView {
+                    id: _fullNote
+                    visible: false
+                }
             }
-//            onCurrentItemChanged: {
-//                _curCategoryName.text = _curCategoryName.text === "Notes" ? "Tasks" : "Notes"
-//            }
 
         }
+//        Component{
 
-//        header: Rectangle {
-//            color: Style.backgroundColor
-//            opacity: Style.emphasisOpacity
-//            height: 80
-
-//            Row {
-//                anchors.verticalCenter: parent.verticalCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                BaseProtoText {
-
-//                    text: "Current category: "
-//                }
-//                BaseProtoText {
-//                    id: _curCategoryName
-//                    text: _list.currentItem === _tasks ? "Notes" : "Tasks"
-//                    color: Style.primaryColor
-//                }
+//        }
+//        Component{
+//            id: _fullTask
+//            FullTaskView {
 //            }
 //        }
 
@@ -93,21 +87,21 @@ Window {
             id: _indicator
             color: Style.backgroundColor
             opacity: Style.emphasisOpacity
-            height: 50
+            height: 40
 
             AddButton {
                 id: _addButton
-                width: 50
-                height: 50
-                anchors.left: parent.left
+                width: parent.height
+                height: width
+                anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
 
                 property date basicTime: new Date()
                 property date basicDate: new Date()
                 area.onClicked: {
                     _list.currentItem.sourceComponent === _tasks
-                            ? _list.currentItem.item.viewModel.addElement("", basicTime.toLocaleDateString("dd/mm/yyyy"),
-                                                                          basicTime.toLocaleTimeString("hh:mm AP"))
+                            ? _list.currentItem.item.viewModel.addElement("", basicDate.toLocaleDateString(Qt.locale("en_EN"), "dd MMM yyyy"),
+                                                                          basicTime.toLocaleTimeString(Qt.locale(), "hh:mm"))
                             : _list.currentItem.item.viewModel.addElement("")
                  }
             }
@@ -120,14 +114,13 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 delegate: Rectangle {
-                    implicitWidth: 14
-                    implicitHeight: 14
+                    implicitWidth: 15
+                    implicitHeight: 15
 
                     radius: width / 2
 
-                    color: Style.primaryColor
+                    color: Style.themeInvertedColor
                     opacity: index === _list.currentIndex ? Style.defaultOpacity : Style.disabledOpacity
-
                 }
             }
         }
@@ -136,7 +129,7 @@ Window {
             id: _notes
             ProtoNoteView {
 
-                //ScrollBar.vertical: ScrollBar{}
+
             }
         }
         Component {
@@ -144,23 +137,6 @@ Window {
             ProtoTasksView{}
         }
 
-//        CatalogueOverlay{
-//            id: _overlay
-
-//            property date basicTime: new Date()
-//            property date basicDate: new Date()
-//            addButton.area.onClicked: {
-//                _list.currentItem.sourceComponent === _tasks ? _list.currentItem.item.viewModel.addElement("", basicTime.toLocaleDateString(), basicTime.toLocaleTimeString())
-//                                                 : _list.currentItem.item.viewModel.addElement("")
-//             }
-//        }
     }
 
-//    ColorOverlay {
-//        anchors.fill: parent
-//        color: Style.backgroundColor
-//        opacity: Style.minimalOpacity
-//        antialiasing: true
-
-//    }
 }

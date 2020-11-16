@@ -7,6 +7,7 @@
 
 class Note
 {
+
 public: 
 
     Note() = default;
