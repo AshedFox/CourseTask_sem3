@@ -100,7 +100,7 @@ Window {
                 property date basicDate: new Date()
                 area.onClicked: {
                     _list.currentItem.sourceComponent === _tasks
-                            ? _list.currentItem.item.viewModel.addElement("", basicDate.toLocaleDateString(Qt.locale("en_EN"), "dd MMM yyyy"),
+                            ? _list.currentItem.item.viewModel.addElement("", basicDate.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy"),
                                                                           basicTime.toLocaleTimeString(Qt.locale(), "hh:mm"))
                             : _list.currentItem.item.viewModel.addElement("")
                  }
@@ -121,6 +121,13 @@ Window {
 
                     color: Style.themeInvertedColor
                     opacity: index === _list.currentIndex ? Style.defaultOpacity : Style.disabledOpacity
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            _list.currentIndex = index
+                        }
+                    }
                 }
             }
         }

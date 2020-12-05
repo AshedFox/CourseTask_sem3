@@ -10,8 +10,6 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-
-    //qmlRegisterType<NotesModel>("Game", 1, 0, "TNotesModel");
     NotesModel::registerMe("Notes");
     TasksModel::registerMe("Tasks");
 
@@ -24,9 +22,6 @@ int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
-
-    NotesModel hm;
-    engine.rootContext()->setContextObject(&hm);
 
     engine.load(url);
 

@@ -6,10 +6,10 @@ import ComponentsModule.Base 1.0
 Item {
     id: root
     property int index
-    property string header
-    property string info
-    property string date
-    property string time
+    property var header: ""
+    property var info: ""
+    property var date: ""
+    property var time: ""
 
     anchors.fill: parent
 
@@ -32,42 +32,73 @@ Item {
         }
         BaseProtoText {
             text: header
-            anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width/5*3
 
-            opacity: Style.emphasisOpacity            
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+
+            opacity: Style.emphasisOpacity
+            onTextEdited: {
+                _tasksLoader.item.viewModel.changeElement(index, text, date, time)
+            }
+
+            readOnly: false
         }
-        Column {
+        DateTimeArea {
             id: _dateTime
 
+            height: parent.height
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            opacity: Style.emphasisOpacity
-            anchors.margins: Style.tinyOffset
-            anchors.rightMargin: Style.defaultOffset
+            anchors.margins: Style.defaultOffset
 
-            BaseText {
-                id: _time
-                verticalAlignment: Text.AlignVCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                readOnly: true
+            opacity: Style.emphasisOpacity
+
+            timeComp {
+                readOnly: false
+                inputMask: "99:99"
+                inputMethodHints: Qt.ImhDigitsOnly
                 text: time
 
+                onAccepted: {
+                    editingModeSwap()
+                }
+                onTextEdited: {
+                    if (timeComp.acceptableInput){
+                        _tasksLoader.item.viewModel.changeElement(index, header, date, timeComp.text)
+                    }
+                    else {
+                        text = time
+                    }
+                }
             }
-            BaseText {
-                id: _date
-                verticalAlignment: Text.AlignVCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                readOnly: true
+            dateComp {
+                readOnly: false
+                inputMask: "99.99.9999"
+                inputMethodHints: Qt.ImhDigitsOnly
                 text: date
+
+                onAccepted: {
+                    editingModeSwap()
+                }
+                onTextEdited: {
+                    if (dateComp.acceptableInput){
+                        _tasksLoader.item.viewModel.changeElement(index, header, dateComp.text, time)
+                    }
+                    else {
+                        text = date
+                    }
+                }
             }
         }
-
     }
     ScrollView {
         width: root.width
         anchors.top: _header.bottom
         anchors.bottom: root.bottom
+        opacity: Style.emphasisOpacity
         background:
         Rectangle {
             anchors.fill: parent
@@ -78,15 +109,12 @@ Item {
         }
         BaseText {
             id: _textField
-            anchors.leftMargin: Style.mediumOffset
+
             text: info
-//            onTextChanged: {
-//                if (text !== info)
-//                    _tasksLoader.item.viewModel.changeTask(index, text)
-//            }
-//            onEditingFinished: {
-//                _tasksLoader.item.viewModel.changeTask(index, text)
-//            }
+            onTextChanged: {
+                if (text !== info)
+                    _tasksLoader.item.viewModel.changeTask(index, text)
+            }
         }
         ScrollBar {
                 id: vbar

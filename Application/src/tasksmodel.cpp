@@ -51,6 +51,7 @@ bool TasksModel::changeElement(int index, QString header, QString date, QString 
     Task oldData = {m_Tasks.at(index).id(), header, date, time, m_Tasks.at(index).info()};
     m_Tasks.removeAt(index);
     m_Tasks.insert(index, oldData);
+    emit dataChanged(createIndex(index,0), createIndex(index,0));
     return true;
 }
 
@@ -60,6 +61,7 @@ bool TasksModel::changeTask(int index, QString info)
     Task oldData = {m_Tasks.at(index).id(), m_Tasks.at(index).header(), m_Tasks.at(index).date(), m_Tasks.at(index).time(), info};
     m_Tasks.removeAt(index);
     m_Tasks.insert(index, oldData);
+    emit dataChanged(createIndex(index,0), createIndex(index,0));
     return true;
 }
 

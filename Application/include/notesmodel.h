@@ -1,5 +1,4 @@
 #pragma once
-#include <QAbstractListModel>
 #include <QVector>
 #include "note.h"
 #include "notesreader.h"

@@ -30,5 +30,7 @@
         <file>qml/ComponentsModule/Impl/FullTaskView.qml</file>
         <file>qml/Resources/backIcon.svg</file>
         <file>qml/ComponentsModule/Base/BackButton.qml</file>
+        <file>qml/ComponentsModule/Base/DateTimeArea.qml</file>
+        <file>qml/ComponentsModule/Base/DateTimePicker.qml</file>
     </qresource>
 </RCC>

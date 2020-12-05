@@ -10,4 +10,5 @@ TextArea {
     color: Style.textColor
     //focus: true
     selectByMouse: true
+
 }

@@ -9,7 +9,6 @@ BaseProtoDelegate {
     property alias delegateArea: _delegateArea
     BaseProtoText {
         id: _header
-        property string fullText: header
 
         anchors.left: root.left
         anchors.right: _buttons.left
@@ -17,11 +16,14 @@ BaseProtoDelegate {
         anchors.verticalCenter: parent.verticalCenter
 
         verticalAlignment: Text.AlignVCenter
+        selectByMouse: true
 
-        text: fullText
-        onEditingFinished: {
-            fullText = text
-            viewModel.changeElement(index, fullText)
+        text: header
+        onTextEdited: {
+            viewModel.changeElement(index, header)
+        }
+        onAccepted: {
+            readOnly = true
         }
     }
 
@@ -42,7 +44,6 @@ BaseProtoDelegate {
             _fullNote.info = info
 
             _fullNote.visible = true
-            _fullNote.transform
         }
     }
 

@@ -12,10 +12,6 @@ BaseProtoView {
     delegate: ProtoTaskDelegate {
         id: _tasks
         width: root.width
-        height: 80
-
-
+        height: 84
     }
-
-
 }

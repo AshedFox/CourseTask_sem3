@@ -6,8 +6,14 @@ import ComponentsModule.Base 1.0
 
 BaseProtoDelegate {
     id: root
+    property bool isInEditing: false
+//    property color dateTimeColor: date+time <= new Date().toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy") +
+//                                               new Date().toLocaleTimeString(Qt.locale(), "hh:mm")
+
+//                                       ? Style.textColor : Style.primaryColor
     BaseProtoText {
         id: _header
+
         property string fullText: header
 
         anchors.left: root.left
@@ -18,36 +24,62 @@ BaseProtoDelegate {
         verticalAlignment: Text.AlignVCenter
 
         text: fullText
+        selectByMouse: true
         onTextEdited: {
-            fullText = text
+            fullText = text           
             viewModel.changeElement(index, text, date, time)
         }
-
+        onAccepted: {
+             editingModeSwap()
+        }
     }
-    Column {
+
+    DateTimeArea {
         id: _dateTime
 
-        property string fullTime: time
-        property string fullDate: date
+        //property string fullTime: time
+        //property string fullDate: date
 
+        height: parent.height
         anchors.right: _buttons.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: Style.tinyOffset
-        anchors.rightMargin: Style.defaultOffset
-        BaseText {
-            id: _time
-            verticalAlignment: Text.AlignVCenter
-            anchors.horizontalCenter: parent.horizontalCenter
+        anchors.margins: Style.defaultOffset
 
-            text: _dateTime.fullTime
+        timeComp {
+            inputMask: "99:99"
+            inputMethodHints: Qt.ImhDigitsOnly
+            text: time
 
+            onAccepted: {
+                editingModeSwap()
+            }
+            onTextEdited: {
+                if (timeComp.acceptableInput){
+                    viewModel.changeElement(index, header, date, timeComp.text)
+                }
+                else {
+                    text = time
+                }
+            }
         }
-        BaseText {
-            id: _date
-            verticalAlignment: Text.AlignVCenter
+        dateComp {
+            inputMask: "99.99.9999"
+            inputMethodHints: Qt.ImhDigitsOnly
+            text: date
 
-            text: _dateTime.fullDate
+            onAccepted: {
+                editingModeSwap()
+            }
+            onTextEdited: {
+                if (dateComp.acceptableInput){
+                    viewModel.changeElement(index, header, dateComp.text, time)
+                }
+                else {
+                    text = date
+                }
+            }
         }
+
     }
 
     opacity: _delegateArea.pressed ? Style.secondaryOpacity
@@ -55,9 +87,13 @@ BaseProtoDelegate {
     MouseArea {
         id: _delegateArea
         anchors.fill: root
-        enabled: _header.readOnly ? true : false
+        enabled: isInEditing ? false : true
         onClicked: {
             forceActiveFocus()
+
+            if (isInEditing) {
+                editingModeSwap()
+            }
 
             _tasksLoader.item.visible = false
 
@@ -69,6 +105,15 @@ BaseProtoDelegate {
 
             _fullTask.visible = true
         }
+    }
+
+    function editingModeSwap(){
+        isInEditing = !isInEditing
+        _header.readOnly = !isInEditing
+        _dateTime.dateComp.readOnly = !isInEditing
+        _dateTime.timeComp.readOnly = !isInEditing
+        if (isInEditing)
+            _header.forceActiveFocus()
     }
 
     Row {
@@ -83,10 +128,7 @@ BaseProtoDelegate {
         ChangeButton{
             height: parent.height
             width: height
-            area.onClicked:{
-                _header.readOnly = !_header.readOnly
-                _header.forceActiveFocus()
-            }
+            area.onClicked: editingModeSwap()
         }
         DeleteButton{
             height: parent.height

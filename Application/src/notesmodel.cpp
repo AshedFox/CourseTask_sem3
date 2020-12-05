@@ -48,6 +48,7 @@ bool NotesModel::changeElement(int index, QString header)
     Note oldData {m_Notes.at(index).id(), header, m_Notes.at(index).info()};
     m_Notes.removeAt(index);
     m_Notes.insert(index, oldData);
+    emit dataChanged(createIndex(index,0), createIndex(index,0));
     return true;
 }
 
@@ -57,6 +58,7 @@ bool NotesModel::changeNote(int index, QString info)
     Note oldData {m_Notes.at(index).id(), m_Notes.at(index).header(), info};
     m_Notes.removeAt(index);
     m_Notes.insert(index, oldData);
+    emit dataChanged(createIndex(index,0), createIndex(index,0));
     return true;
 }
 

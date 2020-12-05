@@ -6,8 +6,8 @@ import ComponentsModule.Base 1.0
 Item {
     id: root
     property int index
-    property string header
-    property string info
+    property var header: ""
+    property var info: ""
 
     anchors.fill: parent
 
@@ -25,27 +25,35 @@ Item {
 
             opacity: Style.emphasisOpacity
             area.onClicked: {
-                _fullNote.visible = false
                 _notesLoader.item.visible = true
+                _fullNote.visible = false
             }
         }
         BaseProtoText {
             text: header
-            anchors.horizontalCenter: parent.horizontalCenter
+
             anchors.verticalCenter: parent.verticalCenter
+            anchors.left: _backButton.right
+            anchors.right: parent.right
 
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
 
             opacity: Style.emphasisOpacity
+
+            readOnly: false
+
+            onTextEdited: {
+                _notesLoader.item.viewModel.changeElement(index, text)
+            }
         }
     }
     ScrollView {
         width: root.width
         anchors.top: _header.bottom
         anchors.bottom: root.bottom
-        background:
-        Rectangle {
+        opacity: Style.emphasisOpacity
+        background: Rectangle {
             anchors.fill: parent
             color: Style.backgroundColor
             opacity: Style.emphasisOpacity
@@ -54,15 +62,11 @@ Item {
         }
         BaseText {
             id: _textField
-            anchors.leftMargin: Style.mediumOffset
             text: info
-//            onTextChanged: {
-//                if (text !== info)
-//                    _notesLoader.item.viewModel.changeTask(index, text)
-//            }
-//            onEditingFinished: {
-//                _notesLoader.item.viewModel.changeNote(index, text)
-//            }
+            onTextChanged: {
+                if (text !== info)
+                    _notesLoader.item.viewModel.changeNote(index, text)
+            }
         }
         ScrollBar {
                 id: _vbar
