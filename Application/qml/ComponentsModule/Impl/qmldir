@@ -8,3 +8,5 @@ FullTaskView 1.0 FullTaskView.qml
 
 ProtoTaskDelegate 1.0 ProtoTaskDelegate.qml
 ProtoTasksView 1.0 ProtoTasksView.qml
+
+SettingsMenu 1.0 SettingsMenu.qml

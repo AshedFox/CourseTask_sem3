@@ -2,7 +2,7 @@ pragma Singleton
 import QtQuick 2.0
 
 QtObject {
-    property bool isDarkTheme: SettingsPromoter.isDarkTheme
+    property bool isDarkTheme: SettingsPromoter ? SettingsPromoter.isDarkTheme : 0
 
     enum ComponentsSizes{
         Small = 1,
@@ -10,7 +10,7 @@ QtObject {
         Big = 3
     }
 
-    property int sizeMode: SettingsPromoter.sizeMode
+    property int sizeMode: SettingsPromoter ? SettingsPromoter.sizeMode : 1
 
     readonly property int notesSize: sizeMode == 1 ? 60 : (sizeMode == 2 ? 80 : 100)
     readonly property int textSize: sizeMode == 1 ? 40 : (sizeMode == 2 ? 52 : 65)

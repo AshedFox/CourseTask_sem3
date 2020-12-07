@@ -16,21 +16,8 @@ Window {
     height: 600
     title: qsTr("APP")
 
-    Popup {
+    SettingsMenu{
         id: _popup
-        width: 200
-        height: _page.height
-        modal: true
-        visible: false
-        background: Rectangle{
-            color: Style.backgroundColor
-
-            //opacity: Style.emphasisOpacity
-        }
-
-//        Overlay.modal: Rectangle {
-//            color: Style.backgroundColor
-//        }
     }
 
     Page {
@@ -42,7 +29,7 @@ Window {
             id: _header
             color: Style.backgroundColor
             opacity: Style.emphasisOpacity
-            height: 40
+            height: 60
             MenuButton{
                 anchors.left: _header.left
                 width: parent.height
@@ -50,21 +37,6 @@ Window {
                 area.onClicked: {
                     _popup.visible = true
                 }
-            }
-            AddButton {
-                id: _addButton
-                width: parent.height
-                height: width
-                anchors.right: parent.right
-
-                property date basicTime: new Date()
-                property date basicDate: new Date()
-                area.onClicked: {
-                    _list.currentItem.sourceComponent === _tasks
-                            ? _list.currentItem.item.viewModel.addElement("", basicDate.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy"),
-                                                                          basicTime.toLocaleTimeString(Qt.locale(), "hh:mm"))
-                            : _list.currentItem.item.viewModel.addElement("")
-                 }
             }
         }
 
@@ -111,7 +83,29 @@ Window {
             id: _indicator
             color: Style.backgroundColor
             opacity: Style.emphasisOpacity
-            height: 40
+            height: 60
+
+            AddButton {
+                id: _addButton
+                width: parent.height
+                height: width
+                anchors.left: parent.left
+
+                visible: {
+                    if (_list.currentItem.sourceComponent === _tasks && _fullTask.visible) return 0
+                    else if (_list.currentItem.sourceComponent === _notes && _fullNote.visible) return 0
+                    else return 1
+                }
+
+                property date basicTime: new Date()
+                property date basicDate: new Date()
+                area.onClicked: {
+                    _list.currentItem.sourceComponent === _tasks
+                        ? _list.currentItem.item.viewModel.addElement("", basicDate.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy"),
+                                                                        basicTime.toLocaleTimeString(Qt.locale(), "hh:mm"))
+                        : list.currentItem.item.viewModel.addElement("")
+                }
+            }
 
             PageIndicator{
                 count: _list.count
