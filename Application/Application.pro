@@ -17,6 +17,8 @@ SOURCES +=  main.cpp \
             src/note.cpp \
             src/notesmodel.cpp \
             src/notesreader.cpp \
+            src/settingspromoter.cpp \
+            src/settingsreader.cpp \
             src/task.cpp \
             src/tasksmodel.cpp \
             src/tasksreader.cpp \
@@ -45,6 +47,8 @@ HEADERS +=  \
             include/note.h \
             include/notesmodel.h \
             include/notesreader.h \
+            include/settingspromoter.h \
+            include/settingsreader.h \
             include/task.h \
             include/tasksmodel.h \
-            include/tasksreader.h \
+            include/tasksreader.h \ \

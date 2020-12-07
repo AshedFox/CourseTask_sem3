@@ -32,5 +32,6 @@
         <file>qml/ComponentsModule/Base/BackButton.qml</file>
         <file>qml/ComponentsModule/Base/DateTimeArea.qml</file>
         <file>qml/ComponentsModule/Base/DateTimePicker.qml</file>
+        <file>qml/ComponentsModule/Base/BaseHeaderText.qml</file>
     </qresource>
 </RCC>

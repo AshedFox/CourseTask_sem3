@@ -7,26 +7,21 @@ import ComponentsModule.Base 1.0
 BaseProtoDelegate {
     id: root
     property bool isInEditing: false
-//    property color dateTimeColor: date+time <= new Date().toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy") +
-//                                               new Date().toLocaleTimeString(Qt.locale(), "hh:mm")
 
-//                                       ? Style.textColor : Style.primaryColor
-    BaseProtoText {
+    BaseHeaderText {
         id: _header
-
-        property string fullText: header
 
         anchors.left: root.left
         anchors.right: _dateTime.left        
         anchors.leftMargin: Style.defaultOffset * 2
+        anchors.rightMargin: Style.defaultOffset
         anchors.verticalCenter: parent.verticalCenter
 
         verticalAlignment: Text.AlignVCenter
 
-        text: fullText
+        text: header
         selectByMouse: true
-        onTextEdited: {
-            fullText = text           
+        onTextEdited: {         
             viewModel.changeElement(index, text, date, time)
         }
         onAccepted: {
@@ -37,13 +32,8 @@ BaseProtoDelegate {
     DateTimeArea {
         id: _dateTime
 
-        //property string fullTime: time
-        //property string fullDate: date
-
-        height: parent.height
         anchors.right: _buttons.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: Style.defaultOffset
 
         timeComp {
             inputMask: "99:99"

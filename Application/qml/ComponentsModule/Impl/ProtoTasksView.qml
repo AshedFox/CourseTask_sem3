@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import ComponentsModule.Base 1.0
+import StyleSettings 1.0
 import Tasks 1.0
 
 BaseProtoView {
@@ -12,6 +13,6 @@ BaseProtoView {
     delegate: ProtoTaskDelegate {
         id: _tasks
         width: root.width
-        height: 84
+        height: Style.notesSize
     }
 }

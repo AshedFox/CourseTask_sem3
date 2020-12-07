@@ -7,20 +7,22 @@ import ComponentsModule.Base 1.0
 BaseProtoDelegate {
     id: root
     property alias delegateArea: _delegateArea
-    BaseProtoText {
+    BaseHeaderText {
         id: _header
 
         anchors.left: root.left
         anchors.right: _buttons.left
         anchors.leftMargin: Style.defaultOffset * 2
+        anchors.rightMargin: Style.defaultOffset
         anchors.verticalCenter: parent.verticalCenter
 
         verticalAlignment: Text.AlignVCenter
         selectByMouse: true
 
         text: header
+
         onTextEdited: {
-            viewModel.changeElement(index, header)
+            viewModel.changeElement(index, text)
         }
         onAccepted: {
             readOnly = true

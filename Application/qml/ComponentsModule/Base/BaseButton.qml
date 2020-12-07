@@ -13,7 +13,7 @@ Rectangle {
     Image {
         id: _internalImage
         anchors.fill: parent
-        anchors.margins: Style.mediumOffset
+        anchors.margins: Style.tinyOffset
     }
     ColorOverlay {
         id: _overlay

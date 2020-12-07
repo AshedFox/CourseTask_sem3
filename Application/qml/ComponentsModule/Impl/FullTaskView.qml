@@ -16,7 +16,7 @@ Item {
     Rectangle {
         id: _header
         width: root.width
-        height: 80
+        height: Style.notesSize
         color: Style.backgroundColor
         BackButton {
             id: _backButton
@@ -30,7 +30,7 @@ Item {
                 _tasksLoader.item.visible = true
             }
         }
-        BaseProtoText {
+        BaseHeaderText {
             text: header
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
@@ -40,6 +40,8 @@ Item {
             horizontalAlignment: Text.AlignHCenter
 
             opacity: Style.emphasisOpacity
+
+            selectByMouse: true
             onTextEdited: {
                 _tasksLoader.item.viewModel.changeElement(index, text, date, time)
             }
@@ -49,7 +51,6 @@ Item {
         DateTimeArea {
             id: _dateTime
 
-            height: parent.height
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             anchors.margins: Style.defaultOffset

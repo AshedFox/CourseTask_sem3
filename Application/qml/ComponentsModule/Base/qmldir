@@ -6,6 +6,7 @@ BaseProtoDelegate 1.0 BaseProtoDelegate.qml
 BaseProtoView 1.0 BaseProtoView.qml
 
 BaseProtoText 1.0 BaseProtoText.qml
+BaseHeaderText 1.0 BaseHeaderText.qml
 BaseText 1.0 BaseText.qml
 
 CatalogueOverlay 1.0 CatalogueOverlay.qml

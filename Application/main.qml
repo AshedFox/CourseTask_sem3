@@ -16,25 +16,57 @@ Window {
     height: 600
     title: qsTr("APP")
 
-//    Popup {
-//        id: popup
-//        width: 400
-//        height: parent.height
-//        modal: true
-//        visible: true
-//        background: Rectangle{
-//            color: Style.primaryColor
-//        }
+    Popup {
+        id: _popup
+        width: 200
+        height: _page.height
+        modal: true
+        visible: false
+        background: Rectangle{
+            color: Style.backgroundColor
+
+            //opacity: Style.emphasisOpacity
+        }
 
 //        Overlay.modal: Rectangle {
-//            color: "#90121212"
+//            color: Style.backgroundColor
 //        }
-//    }
+    }
 
     Page {
         id: _page
 
         anchors.fill: parent
+
+        header: Rectangle {
+            id: _header
+            color: Style.backgroundColor
+            opacity: Style.emphasisOpacity
+            height: 40
+            MenuButton{
+                anchors.left: _header.left
+                width: parent.height
+                height: width
+                area.onClicked: {
+                    _popup.visible = true
+                }
+            }
+            AddButton {
+                id: _addButton
+                width: parent.height
+                height: width
+                anchors.right: parent.right
+
+                property date basicTime: new Date()
+                property date basicDate: new Date()
+                area.onClicked: {
+                    _list.currentItem.sourceComponent === _tasks
+                            ? _list.currentItem.item.viewModel.addElement("", basicDate.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy"),
+                                                                          basicTime.toLocaleTimeString(Qt.locale(), "hh:mm"))
+                            : _list.currentItem.item.viewModel.addElement("")
+                 }
+            }
+        }
 
         background: Rectangle {
             id: _background
@@ -74,37 +106,12 @@ Window {
             }
 
         }
-//        Component{
-
-//        }
-//        Component{
-//            id: _fullTask
-//            FullTaskView {
-//            }
-//        }
 
         footer: Rectangle {
             id: _indicator
             color: Style.backgroundColor
             opacity: Style.emphasisOpacity
             height: 40
-
-            AddButton {
-                id: _addButton
-                width: parent.height
-                height: width
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-
-                property date basicTime: new Date()
-                property date basicDate: new Date()
-                area.onClicked: {
-                    _list.currentItem.sourceComponent === _tasks
-                            ? _list.currentItem.item.viewModel.addElement("", basicDate.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy"),
-                                                                          basicTime.toLocaleTimeString(Qt.locale(), "hh:mm"))
-                            : _list.currentItem.item.viewModel.addElement("")
-                 }
-            }
 
             PageIndicator{
                 count: _list.count

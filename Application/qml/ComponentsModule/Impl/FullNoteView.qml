@@ -14,7 +14,7 @@ Item {
     Rectangle {
         id: _header
         width: root.width
-        height: 80
+        height: Style.notesSize
         color: Style.backgroundColor
         BackButton {
             id: _backButton
@@ -29,7 +29,7 @@ Item {
                 _fullNote.visible = false
             }
         }
-        BaseProtoText {
+        BaseHeaderText {
             text: header
 
             anchors.verticalCenter: parent.verticalCenter
@@ -42,6 +42,8 @@ Item {
             opacity: Style.emphasisOpacity
 
             readOnly: false
+
+            selectByMouse: true
 
             onTextEdited: {
                 _notesLoader.item.viewModel.changeElement(index, text)

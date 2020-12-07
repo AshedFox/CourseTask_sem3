@@ -6,9 +6,8 @@ TextArea {
     id: root
     wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
 
-    font.pointSize: 17
+    font.pixelSize: Style.textSize /2
     color: Style.textColor
-    //focus: true
-    selectByMouse: true
 
+    selectByMouse: true
 }

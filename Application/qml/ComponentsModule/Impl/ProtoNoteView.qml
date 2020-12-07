@@ -14,7 +14,7 @@ BaseProtoView {
     delegate: ProtoNoteDelegate {
         id: _note
         width: root.width
-        height: 84
+        height: Style.notesSize
     }
 
 }

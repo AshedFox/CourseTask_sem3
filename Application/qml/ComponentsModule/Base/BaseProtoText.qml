@@ -12,18 +12,9 @@ TextInput {
 
     maximumLength: 60
 
-//    onTextEdited: {
-//        if (contentHeight > parent.height - 5){
-//            _metrics.font.pixelSize = _metrics.font.pixelSize/2
-//        }
-//        else if (contentHeight < parent.height + 5) {
-//            _metrics.font.pixelSize = _metrics.font.pixelSize*2
-//        }
-//    }
-
     TextMetrics{
         id: _metrics
-        font.pixelSize: 48
+        font.pixelSize: Style.textSize
     }
 }
 

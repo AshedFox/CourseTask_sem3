@@ -2,12 +2,24 @@ pragma Singleton
 import QtQuick 2.0
 
 QtObject {
-    property bool isDarkTheme: true
-    readonly property color primaryColor: isDarkTheme ? "#FF69B4" : "#800000"
+    property bool isDarkTheme: SettingsPromoter.isDarkTheme
+
+    enum ComponentsSizes{
+        Small = 1,
+        Medium = 2,
+        Big = 3
+    }
+
+    property int sizeMode: SettingsPromoter.sizeMode
+
+    readonly property int notesSize: sizeMode == 1 ? 60 : (sizeMode == 2 ? 80 : 100)
+    readonly property int textSize: sizeMode == 1 ? 40 : (sizeMode == 2 ? 52 : 65)
+
+    readonly property color primaryColor: isDarkTheme ? "#FF69B4" : "#B00000"
     readonly property color primaryVariantColor: "#3700B3"
     readonly property color secondaryColor: "#03DAC6"
     readonly property color secondaryVariant: isDarkTheme ? "#018786" : secondaryColor
-    readonly property color backgroundColor: isDarkTheme ? "#121212" : "#C0C0C0"
+    readonly property color backgroundColor: isDarkTheme ? "#121212" : "#A0A0A0"
     readonly property color errorColor: isDarkTheme ? "#CF6679" : "#B00020"
     readonly property color textColor: isDarkTheme ? "#FFFFFF" : "#000000"
     readonly property color themeDefaultColor: isDarkTheme ? "#101010" : "#FFFFFF"

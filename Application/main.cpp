@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include "notesmodel.h"
 #include "tasksmodel.h"
+#include "settingspromoter.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,6 +23,10 @@ int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
+
+    SettingsPromoter settingsPromoter;
+
+    engine.rootContext()->setContextProperty("SettingsPromoter", &settingsPromoter);
 
     engine.load(url);
 
