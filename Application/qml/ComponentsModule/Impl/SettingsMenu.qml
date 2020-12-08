@@ -53,12 +53,12 @@ Popup {
         Row{
             BaseProtoText{
                 readOnly: true
-                text: "THEME "
+                text: "COLOR "
                 font.pixelSize: 36
             }
 
             Switch{
-                width: 100
+                width: 110
                 height: parent.height
 
                 checked: Style.isDarkTheme
