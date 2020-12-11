@@ -4,17 +4,21 @@ import StyleSettings 1.0
 BaseProtoText {
 
 //    function formatText(){
-//        if (height > parent.height){
-//            while (height > parent.height){
+//        if (contentWidth > parent.width){
+//            while (contentWidth > parent.width){
 //                font.pixelSize--
 //            }
 //        }
 //        else {
-//            if (height < parent.height /2)
+//            if (contentWidth < parent.width /2)
 //            while (font.pixelSize < Style.textSize){
 //                font.pixelSize++
 //            }
 //        }
+//    }
+
+//    onTextChanged: {
+//        formatText()
 //    }
 
 //    onContentHeightChanged: {

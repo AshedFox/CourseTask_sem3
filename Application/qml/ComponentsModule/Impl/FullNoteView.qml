@@ -47,6 +47,7 @@ Item {
 
             onTextEdited: {
                 _notesLoader.item.viewModel.changeElement(index, text)
+                header = text
             }
         }
     }
@@ -66,8 +67,10 @@ Item {
             id: _textField
             text: info
             onTextChanged: {
-                if (text !== info)
+                if (text !== info) {
                     _notesLoader.item.viewModel.changeNote(index, text)
+                    info = text
+                }
             }
         }
         ScrollBar {

@@ -103,7 +103,7 @@ Window {
                     _list.currentItem.sourceComponent === _tasks
                         ? _list.currentItem.item.viewModel.addElement("", basicDate.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy"),
                                                                         basicTime.toLocaleTimeString(Qt.locale(), "hh:mm"))
-                        : list.currentItem.item.viewModel.addElement("")
+                        : _list.currentItem.item.viewModel.addElement("")
                 }
             }
 

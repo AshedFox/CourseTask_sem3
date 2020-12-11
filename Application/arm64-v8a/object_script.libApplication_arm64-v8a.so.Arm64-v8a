@@ -1,0 +1,13 @@
+arm64-v8a/main.obj
+arm64-v8a/note.obj
+arm64-v8a/notesmodel.obj
+arm64-v8a/notesreader.obj
+arm64-v8a/settingspromoter.obj
+arm64-v8a/settingsreader.obj
+arm64-v8a/task.obj
+arm64-v8a/tasksmodel.obj
+arm64-v8a/tasksreader.obj
+arm64-v8a/qrc_qml.obj
+arm64-v8a/moc_notesmodel.obj
+arm64-v8a/moc_settingspromoter.obj
+arm64-v8a/moc_tasksmodel.obj

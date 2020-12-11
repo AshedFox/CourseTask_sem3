@@ -8,9 +8,9 @@ TextInput {
     font: _metrics.font
     readOnly: true
     color: Style.textColor
-    wrapMode: TextInput.WrapAtWordBoundaryOrAnywhere
+    //wrapMode: TextInput.WrapAtWordBoundaryOrAnywhere
 
-    maximumLength: 60
+    maximumLength: 40
 
     TextMetrics{
         id: _metrics

@@ -13,7 +13,6 @@
         <file>qml/ComponentsModule/Base/BaseProtoView.qml</file>
         <file>qml/ComponentsModule/Base/BaseProtoText.qml</file>
         <file>qml/ComponentsModule/Base/BaseText.qml</file>
-        <file>qml/ComponentsModule/Base/CatalogueOverlay.qml</file>
         <file>qml/ComponentsModule/Impl/ProtoNoteDelegate.qml</file>
         <file>qml/ComponentsModule/Impl/ProtoNoteView.qml</file>
         <file>qml/Resources/changeIcon.svg</file>
@@ -31,8 +30,11 @@
         <file>qml/Resources/backIcon.svg</file>
         <file>qml/ComponentsModule/Base/BackButton.qml</file>
         <file>qml/ComponentsModule/Base/DateTimeArea.qml</file>
-        <file>qml/ComponentsModule/Base/DateTimePicker.qml</file>
         <file>qml/ComponentsModule/Base/BaseHeaderText.qml</file>
         <file>qml/ComponentsModule/Impl/SettingsMenu.qml</file>
+        <file>qml/ComponentsModule/Impl/AlarmDialog.qml</file>
+        <file>qml/ComponentsModule/Impl/TumblerDelegate.qml</file>
+        <file>qml/ComponentsModule/Base/BaseDialog.qml</file>
+        <file>qml/ComponentsModule/Impl/DeleteDialog.qml</file>
     </qresource>
 </RCC>

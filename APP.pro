@@ -1,6 +1,7 @@
-TEMPLATE =subdirs
-SUBDIRS += DBManager
-SUBDIRS += Application
+TEMPLATE = subdirs
 
 CONFIG += ordered
 CONFIG += debug
+
+SUBDIRS += DBManager
+SUBDIRS += Application

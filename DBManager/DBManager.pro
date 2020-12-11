@@ -6,13 +6,6 @@ TEMPLATE = lib
 DESTDIR = $$PWD/../shared/lib
 CONFIG += debug
 
-SOURCES +=  \
-            src/Manipulator.cpp \
-            src/ConnectionManager.cpp \
-            src/Executor.cpp \
-            src/Processor.cpp \
-            src/Selector.cpp
-
 INCLUDEPATH += $$PWD/include/
 
 HEADERS +=  \
@@ -23,6 +16,14 @@ HEADERS +=  \
             include/Manipulator.h \
             include/Processor.h \
             include/Selector.h
+
+
+SOURCES +=  \
+            src/Manipulator.cpp \
+            src/ConnectionManager.cpp \
+            src/Executor.cpp \
+            src/Processor.cpp \
+            src/Selector.cpp
 
 headers.path = $$PWD/../shared/include
 headers.files = include/DBTypes.h \

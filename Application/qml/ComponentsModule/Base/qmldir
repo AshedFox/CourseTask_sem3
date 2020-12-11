@@ -19,4 +19,5 @@ BackButton 1.0 BackButton.qml
 
 
 DateTimeArea 1.0 DateTimeArea.qml
-DateTimePicker 1.0 DateTimePicker.qml
+
+BaseDialog 1.0 BaseDialog.qml

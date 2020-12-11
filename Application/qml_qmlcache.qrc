@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="qml/StyleSettings/qmldir">qml/StyleSettings/qmldir</file>
+        <file alias="qml/ResourceProvider/qmldir">qml/ResourceProvider/qmldir</file>
+        <file alias="qml/Resources/menuIcon.svg">qml/Resources/menuIcon.svg</file>
+        <file alias="qml/ComponentsModule/Impl/qmldir">qml/ComponentsModule/Impl/qmldir</file>
+        <file alias="qml/ComponentsModule/qmldir">qml/ComponentsModule/qmldir</file>
+        <file alias="qml/ComponentsModule/Base/qmldir">qml/ComponentsModule/Base/qmldir</file>
+        <file alias="qml/Resources/changeIcon.svg">qml/Resources/changeIcon.svg</file>
+        <file alias="qml/Resources/deleteIcon.svg">qml/Resources/deleteIcon.svg</file>
+        <file alias="qml/Resources/addIcon.svg">qml/Resources/addIcon.svg</file>
+        <file alias="qml/Resources/backIcon.svg">qml/Resources/backIcon.svg</file>
+    </qresource>
+</RCC>

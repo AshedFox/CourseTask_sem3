@@ -10,3 +10,7 @@ ProtoTaskDelegate 1.0 ProtoTaskDelegate.qml
 ProtoTasksView 1.0 ProtoTasksView.qml
 
 SettingsMenu 1.0 SettingsMenu.qml
+
+TumblerDelegate 1.0 TumblerDelegate.qml
+AlarmDialog 1.0 AlarmDialog.qml
+DeleteDialog 1.0 DeleteDialog.qml

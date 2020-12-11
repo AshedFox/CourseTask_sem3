@@ -51,4 +51,7 @@ HEADERS +=  \
             include/settingsreader.h \
             include/task.h \
             include/tasksmodel.h \
-            include/tasksreader.h \ \
+            include/tasksreader.h
+
+ANDROID_EXTRA_LIBS = $$PWD/../shared/lib/libDBManager_x86.so
+

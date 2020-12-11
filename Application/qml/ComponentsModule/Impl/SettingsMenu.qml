@@ -13,16 +13,15 @@ Popup {
         color: Style.backgroundColor
     }
 
+
     Column {
         anchors.left: parent.left
-
-        //width: parent.width
-        //height: parent.height
 
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: Style.mediumSpacing
         spacing: Style.mediumSpacing
+
         Row{
             BaseProtoText{
                 readOnly: true

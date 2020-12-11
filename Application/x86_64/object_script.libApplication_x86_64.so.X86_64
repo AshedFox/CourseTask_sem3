@@ -1,0 +1,13 @@
+x86_64/main.obj
+x86_64/note.obj
+x86_64/notesmodel.obj
+x86_64/notesreader.obj
+x86_64/settingspromoter.obj
+x86_64/settingsreader.obj
+x86_64/task.obj
+x86_64/tasksmodel.obj
+x86_64/tasksreader.obj
+x86_64/qrc_qml.obj
+x86_64/moc_notesmodel.obj
+x86_64/moc_settingspromoter.obj
+x86_64/moc_tasksmodel.obj

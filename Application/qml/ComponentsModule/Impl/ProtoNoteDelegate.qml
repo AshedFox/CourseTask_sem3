@@ -7,6 +7,8 @@ import ComponentsModule.Base 1.0
 BaseProtoDelegate {
     id: root
     property alias delegateArea: _delegateArea
+    property bool isInEditing: false
+
     BaseHeaderText {
         id: _header
 
@@ -25,7 +27,7 @@ BaseProtoDelegate {
             viewModel.changeElement(index, text)
         }
         onAccepted: {
-            readOnly = true
+            editingModeSwap()
         }
     }
 
@@ -37,7 +39,9 @@ BaseProtoDelegate {
         enabled: _header.readOnly ? true : false
 
         onClicked: {
-            forceActiveFocus()
+            if (isInEditing) {
+                editingModeSwap()
+            }
 
             _notesLoader.item.visible = false
 
@@ -46,6 +50,18 @@ BaseProtoDelegate {
             _fullNote.info = info
 
             _fullNote.visible = true
+        }
+    }
+
+    function editingModeSwap(){
+        isInEditing = !isInEditing
+        _header.readOnly = !isInEditing
+        if (isInEditing) {
+            opacity = Style.secondaryOpacity
+            _header.forceActiveFocus()
+        }
+        else {
+            opacity = Style.emphasisOpacity
         }
     }
 
@@ -61,16 +77,20 @@ BaseProtoDelegate {
         ChangeButton{
             height: parent.height
             width: height
-            area.onClicked: {
-                _header.readOnly = !_header.readOnly
-                _header.forceActiveFocus()
-            }
+            area.onClicked: editingModeSwap()
 
         }
         DeleteButton{
             height: parent.height
             width: height
-            area.onClicked: viewModel.deleteElement(index)
+            area.onClicked:{
+                _deleteDialog.open()
+
+            }
         }
+    }
+    DeleteDialog {
+        id: _deleteDialog
+        onAccepted: viewModel.deleteElement(index)
     }
 }

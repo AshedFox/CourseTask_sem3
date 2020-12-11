@@ -13,6 +13,19 @@ Item {
 
     anchors.fill: parent
 
+    AlarmDialog {
+        id: _alarmDialog
+
+        onAccepted: changeDate(date)
+    }
+
+    function changeDate(date){
+        _tasksLoader.item.viewModel.changeElement(index, header, date.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy"),
+                                date.toLocaleTimeString(Qt.locale(), "hh:mm"))
+        root.date = _dateTime.dateComp.text = date.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy")
+        root.time = _dateTime.timeComp.text = date.toLocaleTimeString(Qt.locale(), "hh:mm")
+    }
+
     Rectangle {
         id: _header
         width: root.width
@@ -44,6 +57,7 @@ Item {
             selectByMouse: true
             onTextEdited: {
                 _tasksLoader.item.viewModel.changeElement(index, text, date, time)
+                header = text
             }
 
             readOnly: false
@@ -58,41 +72,18 @@ Item {
             opacity: Style.emphasisOpacity
 
             timeComp {
-                readOnly: false
-                inputMask: "99:99"
-                inputMethodHints: Qt.ImhDigitsOnly
                 text: time
 
-                onAccepted: {
-                    editingModeSwap()
-                }
-                onTextEdited: {
-                    if (timeComp.acceptableInput){
-                        _tasksLoader.item.viewModel.changeElement(index, header, date, timeComp.text)
-                    }
-                    else {
-                        text = time
-                    }
-                }
             }
             dateComp {
-                readOnly: false
-                inputMask: "99.99.9999"
-                inputMethodHints: Qt.ImhDigitsOnly
                 text: date
 
-                onAccepted: {
-                    editingModeSwap()
-                }
-                onTextEdited: {
-                    if (dateComp.acceptableInput){
-                        _tasksLoader.item.viewModel.changeElement(index, header, dateComp.text, time)
-                    }
-                    else {
-                        text = date
-                    }
-                }
             }
+        }
+        MouseArea {
+            anchors.fill: _dateTime
+            hoverEnabled: true
+            onClicked: _alarmDialog.open()
         }
     }
     ScrollView {
@@ -113,8 +104,10 @@ Item {
 
             text: info
             onTextChanged: {
-                if (text !== info)
+                if (text !== info) {
                     _tasksLoader.item.viewModel.changeTask(index, text)
+                    info = text
+                }
             }
         }
         ScrollBar {

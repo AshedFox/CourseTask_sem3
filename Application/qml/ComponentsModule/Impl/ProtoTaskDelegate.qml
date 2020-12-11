@@ -8,6 +8,39 @@ BaseProtoDelegate {
     id: root
     property bool isInEditing: false
 
+    AlarmDialog {
+        id: _alarmDialog
+
+        y:{
+           if (count > 4 && index === count-1)
+               y = -100
+           else
+               y = 0
+        }
+
+        onAccepted: changeDate(date)
+    }
+    DeleteDialog{
+        id: _deleteDialog
+
+        y:{
+           if (count > 4 && index === count-1)
+               y = -Style.notesSize
+           else
+               y = 0
+        }
+
+        onAccepted: deleteTask()
+    }
+
+    function changeDate(date){
+        viewModel.changeElement(index, header, date.toLocaleDateString(Qt.locale("en_EN"), "dd.MM.yyyy"),
+                                date.toLocaleTimeString(Qt.locale(), "hh:mm"))
+    }
+    function deleteTask(){
+        viewModel.deleteElement(index)
+    }
+
     BaseHeaderText {
         id: _header
 
@@ -36,40 +69,44 @@ BaseProtoDelegate {
         anchors.verticalCenter: parent.verticalCenter
 
         timeComp {
-            inputMask: "99:99"
-            inputMethodHints: Qt.ImhDigitsOnly
+//            inputMask: "99:99"
+//            inputMethodHints: Qt.ImhDigitsOnly
             text: time
 
             onAccepted: {
                 editingModeSwap()
             }
-            onTextEdited: {
-                if (timeComp.acceptableInput){
-                    viewModel.changeElement(index, header, date, timeComp.text)
-                }
-                else {
-                    text = time
-                }
-            }
+//            onTextChanged: {
+//                if (timeComp.acceptableInput){
+//                    viewModel.changeElement(index, header, date, timeComp.text)
+//                }
+//                else {
+//                    text = time
+//                }
+//            }
         }
         dateComp {
-            inputMask: "99.99.9999"
-            inputMethodHints: Qt.ImhDigitsOnly
+//            inputMask: "99.99.9999"
+//            inputMethodHints: Qt.ImhDigitsOnly
             text: date
 
             onAccepted: {
                 editingModeSwap()
             }
-            onTextEdited: {
-                if (dateComp.acceptableInput){
-                    viewModel.changeElement(index, header, dateComp.text, time)
-                }
-                else {
-                    text = date
-                }
-            }
+//            onTextChanged: {
+//                if (dateComp.acceptableInput){
+//                    viewModel.changeElement(index, header, dateComp.text, time)
+//                }
+//                else {
+//                    text = date
+//                }
+//            }
         }
-
+    }
+    MouseArea {
+        anchors.fill: _dateTime
+        hoverEnabled: true
+        onClicked: _alarmDialog.open()
     }
 
     opacity: _delegateArea.pressed ? Style.secondaryOpacity
@@ -79,8 +116,6 @@ BaseProtoDelegate {
         anchors.fill: root
         enabled: isInEditing ? false : true
         onClicked: {
-            forceActiveFocus()
-
             if (isInEditing) {
                 editingModeSwap()
             }
@@ -102,8 +137,13 @@ BaseProtoDelegate {
         _header.readOnly = !isInEditing
         _dateTime.dateComp.readOnly = !isInEditing
         _dateTime.timeComp.readOnly = !isInEditing
-        if (isInEditing)
+        if (isInEditing) {
+            opacity = Style.secondaryOpacity
             _header.forceActiveFocus()
+        }
+        else {
+            opacity = Style.emphasisOpacity
+        }
     }
 
     Row {
@@ -123,7 +163,7 @@ BaseProtoDelegate {
         DeleteButton{
             height: parent.height
             width: height
-            area.onClicked: viewModel.deleteElement(index)
+            area.onClicked: _deleteDialog.open()
         }
     }
 }
