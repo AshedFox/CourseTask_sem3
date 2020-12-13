@@ -1,4 +1,4 @@
-#include "settingspromoter.h"
+    #include "settingspromoter.h"
 #include <iostream>
 
 SettingsPromoter::SettingsPromoter()

@@ -17,6 +17,9 @@ BaseProtoDelegate {
            else
                y = 0
         }
+        onAboutToShow: {
+            defineCurrentToAlarmDialog()
+        }
 
         onAccepted: changeDate(date)
     }
@@ -31,6 +34,20 @@ BaseProtoDelegate {
         }
 
         onAccepted: deleteTask()
+    }
+
+    function defineCurrentToAlarmDialog() {
+        var num = time.slice(3,5)
+        _alarmDialog.minutesTumbler.currentIndex = num
+        num = time.slice(0, 2)
+        _alarmDialog.hoursTumbler.currentIndex = num
+        num = date.slice(0, 2)
+        _alarmDialog.dayTumbler.currentIndex = num - 1
+        num = date.slice(3, 5)
+        _alarmDialog.monthTumbler.currentIndex = num - 1
+        num = date.slice(6, 10)
+        num -= _alarmDialog.yearTumbler.years[0]
+        _alarmDialog.yearTumbler.currentIndex = num
     }
 
     function changeDate(date){
@@ -69,38 +86,18 @@ BaseProtoDelegate {
         anchors.verticalCenter: parent.verticalCenter
 
         timeComp {
-//            inputMask: "99:99"
-//            inputMethodHints: Qt.ImhDigitsOnly
             text: time
 
             onAccepted: {
                 editingModeSwap()
             }
-//            onTextChanged: {
-//                if (timeComp.acceptableInput){
-//                    viewModel.changeElement(index, header, date, timeComp.text)
-//                }
-//                else {
-//                    text = time
-//                }
-//            }
         }
         dateComp {
-//            inputMask: "99.99.9999"
-//            inputMethodHints: Qt.ImhDigitsOnly
             text: date
 
             onAccepted: {
                 editingModeSwap()
             }
-//            onTextChanged: {
-//                if (dateComp.acceptableInput){
-//                    viewModel.changeElement(index, header, dateComp.text, time)
-//                }
-//                else {
-//                    text = date
-//                }
-//            }
         }
     }
     MouseArea {

@@ -16,7 +16,24 @@ Item {
     AlarmDialog {
         id: _alarmDialog
 
+
+        onAboutToShow: defineCurrentToAlarmDialog()
+
         onAccepted: changeDate(date)
+    }
+
+    function defineCurrentToAlarmDialog() {
+        var num = time.slice(3,5)
+        _alarmDialog.minutesTumbler.currentIndex = num
+        num = time.slice(0, 2)
+        _alarmDialog.hoursTumbler.currentIndex = num
+        num = date.slice(0, 2)
+        _alarmDialog.dayTumbler.currentIndex = num - 1
+        num = date.slice(3, 5)
+        _alarmDialog.monthTumbler.currentIndex = num - 1
+        num = date.slice(6, 10)
+        num -= _alarmDialog.yearTumbler.years[0]
+        _alarmDialog.yearTumbler.currentIndex = num
     }
 
     function changeDate(date){

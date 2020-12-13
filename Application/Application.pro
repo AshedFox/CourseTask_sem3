@@ -1,5 +1,9 @@
 QT += quick
 
+QT += core sql
+QT += svg
+
+
 CONFIG += C++11
 
 # The following define makes your compiler emit warnings if you use
@@ -33,8 +37,8 @@ QML2_IMPORT_PATH += $$PWD/qml
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
 
-INCLUDEPATH += $$PWD/include
 INCLUDEPATH += $$PWD/../shared/include
+INCLUDEPATH += $$PWD/include
 
 LIBS += -L$$PWD/../shared/lib/ -lDBManager
 
@@ -52,6 +56,4 @@ HEADERS +=  \
             include/task.h \
             include/tasksmodel.h \
             include/tasksreader.h
-
-ANDROID_EXTRA_LIBS = $$PWD/../shared/lib/libDBManager_x86.so
 

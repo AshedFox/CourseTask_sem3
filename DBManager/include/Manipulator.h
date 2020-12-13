@@ -9,7 +9,7 @@ class Manipulator
 public:
     QPair<DBResult, DBIndex> insertRow(const QString& tableName,const QVariantList& rowData);
     DBResult deleteRow(const QString& tableName, const DBEntry& rowData);
-    QPair<DBResult, DBIndex> changeRow(const QString& tableName, const int inde, const QVariantList& newRowData);
+    QPair<DBResult, DBIndex> changeRow(const QString& tableName, const int index, const QVariantList& newRowData);
 
 private:
     Executor m_executor;
@@ -18,7 +18,6 @@ private:
     QString generateDeleteQuery(const QString& tableName, size_t paramCount) const;
 
     QString generateChangeQuery(const QString& tableName, const int index, size_t paramCount) const;
-    //QString generateChangeQueryNewData(const QString& tableName, size_t paramCount) const;
 };
 }
 

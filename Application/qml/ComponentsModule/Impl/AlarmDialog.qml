@@ -13,9 +13,15 @@ BaseDialog {
     property date date
     property string dateString: ""
 
+    property alias minutesTumbler: minutesTumbler
+    property alias hoursTumbler: hoursTumbler
+    property alias dayTumbler: dayTumbler
+    property alias monthTumbler: monthTumbler
+    property alias yearTumbler: yearTumbler
+
     function formatNumber(number) {
         return number < 10 && number >= 0 ? "0" + number : number.toString()
-    }
+    }  
 
     onAccepted: {
         dateString = formatNumber(hoursTumbler.currentIndex) + " " + formatNumber(minutesTumbler.currentIndex) + " " +
@@ -86,7 +92,7 @@ BaseDialog {
             Tumbler {
                 id: monthTumbler
                 Layout.fillWidth: true
-                onCurrentIndexChanged: dayTumbler.updateModel()
+                onCurrentIndexChanged: if (dayTumbler.currentIndex > 27) dayTumbler.updateModel()
 
                 model: 12
                 delegate: TumblerDelegate {

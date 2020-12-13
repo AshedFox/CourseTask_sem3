@@ -13,10 +13,6 @@ Column {
         horizontalAlignment: TextInput.AlignHCenter
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: Style.textSize/2
-
-//        validator: RegExpValidator {
-//            regExp: /^([0-1]?[0-9]|2?[0-3]):([0-5]?[0-9])$/
-//        }
     }
     BaseProtoText {
         id: _date
@@ -24,9 +20,5 @@ Column {
         horizontalAlignment: TextInput.AlignHCenter
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: Style.textSize/2
-
-//        validator: RegExpValidator {
-//            regExp:  /^([1-2]?[0-9]|3?[0-1]|0?[1-9]).(0?[1-9]|1?[0-2]).([1-2]?[0-9]?[0-9]?[0-9])$/
-//        }
     }
 }

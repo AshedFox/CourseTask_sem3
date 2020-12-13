@@ -1,5 +1,5 @@
-QT -=qui
-QT +=core sql
+QT -= qui
+QT += core sql
 CONFIG += C++11
 TEMPLATE = lib
 
