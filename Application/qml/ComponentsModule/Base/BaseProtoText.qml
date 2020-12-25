@@ -5,12 +5,14 @@ import QtQuick.Controls 2.5
 TextInput {
     id: root
 
-    font: _metrics.font
+    property alias metrics: _metrics
+
+    font.pixelSize: Style.textSize
+
     readOnly: true
     color: Style.textColor
-    //wrapMode: TextInput.WrapAtWordBoundaryOrAnywhere
 
-    maximumLength: 40
+    maximumLength: 30
 
     TextMetrics{
         id: _metrics

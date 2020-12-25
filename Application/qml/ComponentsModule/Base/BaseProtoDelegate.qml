@@ -7,13 +7,5 @@ Rectangle {
     color: Style.backgroundColor
 
     radius: Math.round(height/12)
-//    ColorOverlay {
-//        id: _overlay
-//        anchors.fill: root
-//        color: index === 1 ? Style.primaryColor : "transparent"
-//        opacity: Style.minimalOpacity
-//        antialiasing: true
-//        smooth: true
-//    }
 
 }

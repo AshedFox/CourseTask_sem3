@@ -2,34 +2,49 @@ import QtQuick 2.0
 import StyleSettings 1.0
 
 BaseProtoText {
+    id: root
+     function fillText() {
+        metrics.text = text
+        font.pixelSize = Style.textSize
+        metrics.font.pixelSize = font.pixelSize
+        if (metrics.width > width - font.pixelSize && font.pixelSize > 20) {
+            while (metrics.width > width - font.pixelSize && font.pixelSize > 20) {
+                metrics.font.pixelSize = --font.pixelSize
+            }
+        }
+        if (metrics.width < width - 4 * font.pixelSize && font.pixelSize < Style.textSize) {
+            while (metrics.width < width - 4*font.pixelSize && font.pixelSize < Style.textSize) {
+                metrics.font.pixelSize = ++font.pixelSize
+            }
+        }
+    }
 
-//    function formatText(){
-//        if (contentWidth > parent.width){
-//            while (contentWidth > parent.width){
-//                font.pixelSize--
-//            }
-//        }
-//        else {
-//            if (contentWidth < parent.width /2)
-//            while (font.pixelSize < Style.textSize){
-//                font.pixelSize++
-//            }
-//        }
-//    }
+    function delay(delayTime, cb) {
+        function Timer() {
+            return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root);
+        }
 
-//    onTextChanged: {
-//        formatText()
-//    }
+        var timer = new Timer();
+        timer.interval = 1;
+        timer.repeat = true;
+        timer.triggered.connect(function release () {
+            timer.triggered.disconnect(cb);
+            timer.triggered.disconnect(release);
+        });
 
-//    onContentHeightChanged: {
-//        if (height > parent.height){
-//            while (height > parent.height){
-//                font.pixelSize--
-//            }
-//        }
-//        if (height < parent.height/3*2){
-//            while (height < parent.height-5)
-//                font.pixelSize++
-//       }
-//    }
+        timer.start();
+    }
+
+    onTextChanged: {
+        if (!parent.width)
+            delay(20, fillText)
+        else
+            fillText()
+    }
+    onWidthChanged: {
+        if (!parent.width)
+            delay(20, fillText)
+        else
+            fillText()
+    }
 }

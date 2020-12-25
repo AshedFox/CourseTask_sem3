@@ -71,6 +71,7 @@ BaseProtoDelegate {
 
         text: header
         selectByMouse: true
+
         onTextEdited: {         
             viewModel.changeElement(index, text, date, time)
         }

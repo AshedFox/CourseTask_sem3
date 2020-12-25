@@ -16,6 +16,7 @@ Item {
         width: root.width
         height: Style.notesSize
         color: Style.backgroundColor
+
         BackButton {
             id: _backButton
             height: _header.height-20

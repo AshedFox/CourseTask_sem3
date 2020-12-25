@@ -19,5 +19,3 @@ namespace db {
         std::unique_ptr<ProcessorPrivate> m_deepPtr;
     };
 }
-
-
